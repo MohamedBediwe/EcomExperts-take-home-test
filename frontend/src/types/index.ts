@@ -28,6 +28,7 @@ export interface Product {
 export interface StepData {
   id: number
   title: string
+  aliasName: string
   icon: string
   products: Product[]
 }

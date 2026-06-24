@@ -40,6 +40,7 @@ router.get('/', (req, res) => {
       id: step.id,
       title: step.title,
       icon: toAssetUrl(req, step.icon),
+      aliasName: step.aliasName,
       products: productsWithVariants,
     }
   })

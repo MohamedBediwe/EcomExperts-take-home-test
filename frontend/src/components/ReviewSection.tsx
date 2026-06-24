@@ -25,7 +25,7 @@ export default function ReviewSection() {
   const saveForLater = useStore((state) => state.saveForLater)
   const [saveMessage, setSaveMessage] = useState('')
   const [showCheckoutModal, setShowCheckoutModal] = useState(false)
-
+  
   const { reviewItems, subtotal, totalSavings, finalTotal, grouped } = useMemo(() => {
     if (!steps) {
       return { reviewItems: [], subtotal: 0, totalSavings: 0, finalTotal: 0, grouped: {} }
@@ -99,7 +99,7 @@ export default function ReviewSection() {
     }
   }, [cart, steps])
 
-  const categories = ['cameras', 'sensors', 'accessories', 'plan']
+  const categories = steps?.map(e => e.aliasName);
 
   const handleQuantityChange = (item: ReviewLineItem, delta: number) => {
     updateQuantity(item.stepId, item.productId, item.variantId, delta)
@@ -140,7 +140,7 @@ export default function ReviewSection() {
             <p className="text-xs sm:text-sm text-gray-500 mb-4 border-b border-b-[#CED6DE] pb-4">
               Review your personalized protection system designed to keep what matters most safe.
             </p>
-            {categories.map(
+            {categories?.map(
             (cat) =>
               grouped[cat] && (
               <div key={cat} className="mb-4 border-b border-b-[#CED6DE]">

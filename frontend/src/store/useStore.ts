@@ -73,10 +73,9 @@ const initialCart: CartState = {
   4: [],
 }
 
-const SAVED_CART_KEY = 'wyze_saved_cart'
 
 const loadSavedCartFromStorage = () => {
-  const stored = localStorage.getItem(SAVED_CART_KEY)
+  const stored = localStorage.getItem("cart")
   if (!stored) return null
   try {
     const data = JSON.parse(stored)
@@ -177,11 +176,11 @@ export const useStore = create<Store>()((set, get) => ({
       activeStep: state.activeStep,
       savedAt: new Date().toISOString(),
     }
-    localStorage.setItem(SAVED_CART_KEY, JSON.stringify(sessionData))
+    localStorage.setItem("cart", JSON.stringify(sessionData))
   },
 
   loadSavedSession: () => {
-    const stored = localStorage.getItem(SAVED_CART_KEY)
+    const stored = localStorage.getItem("cart")
     if (!stored) return false
     try {
       const data = JSON.parse(stored)

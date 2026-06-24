@@ -28,6 +28,8 @@ function App() {
         }
         const data = await res.json()
         setSteps(data.steps)
+        console.log(data.steps);
+        
       } catch (err) {
         if (err instanceof DOMException && err.name === 'AbortError') return
         setError('Failed to load products')

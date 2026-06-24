@@ -8,6 +8,7 @@ db.exec(`
   CREATE TABLE IF NOT EXISTS steps (
     id INTEGER PRIMARY KEY,
     title TEXT NOT NULL,
+    aliasName TEXT NOT NULL,
     icon TEXT NOT NULL,
     order_num INTEGER NOT NULL
   );

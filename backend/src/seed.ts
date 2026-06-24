@@ -2,11 +2,11 @@ import db from './db'
 
 db.exec('DELETE FROM variants; DELETE FROM products; DELETE FROM steps;')
 
-const insertStep = db.prepare('INSERT INTO steps (id, title, icon, order_num) VALUES (?, ?, ?, ?)')
-insertStep.run(1, 'Choose your cameras', `http://localhost:5000/icons/camera.svg`, 1)
-insertStep.run(2, 'Choose your plan', `http://localhost:5000/icons/shield.svg`, 2)
-insertStep.run(3, 'Choose your sensors', `http://localhost:5000/icons/sensor.svg`, 3)
-insertStep.run(4, 'Add extra protection', `http://localhost:5000/icons/grid.svg`, 4)
+const insertStep = db.prepare('INSERT INTO steps (id, title, aliasName, icon, order_num) VALUES (?, ?, ?, ?, ?)')
+insertStep.run(1, 'Choose your cameras', "cameras", `http://localhost:5000/icons/camera.svg`, 1)
+insertStep.run(2, 'Choose your plan', "plan", `http://localhost:5000/icons/shield.svg`, 2)
+insertStep.run(3, 'Choose your sensors', "sensors", `http://localhost:5000/icons/sensor.svg`, 3)
+insertStep.run(4, 'Add extra protection', "accessories", `http://localhost:5000/icons/grid.svg`, 4)
 
 const insertProduct = db.prepare(`
   INSERT INTO products (id, name, description, image, badge_text, badge_color, has_variants, price, compare_at_price, category, step_id)
