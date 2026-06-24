@@ -98,3 +98,13 @@ On a clean session, `sense-hub` (the required hub) is pre-added to step 3 at qua
 |---|---|
 | Frontend | React 19, Vite 8, TypeScript, Tailwind CSS v4, Zustand 5 |
 | Backend | Node.js, Express 5, TypeScript, better-sqlite3 |
+
+## Technical Decisions
+
+### Responsive Design Interpretation
+
+The Figma file provides two layouts that both use a width of **1440px**. To better demonstrate responsive implementation and breakpoint handling, I interpreted one of the layouts as a **1024px viewport** while preserving the intended visual design, spacing, and hierarchy.
+
+### Font Optimization
+
+The design appears to use a different font for the checkout button. I chose not to include an additional font solely for this element because introducing a new font dependency for a single button would increase asset size and network requests while providing minimal visual benefit. Instead, I prioritized performance and consistency by using the project's primary font throughout the application.
