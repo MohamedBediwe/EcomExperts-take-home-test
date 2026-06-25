@@ -68,7 +68,7 @@ All UI state (active accordion step, per-variant quantities, selected-variant di
 Each `(productId, variantId)` pair is tracked independently in the cart. Switching the displayed variant on a card changes only which variant the stepper reads/writes — it never zeroes out quantities for other variants. The review panel iterates all cart entries regardless of which variant is currently "focused" on the card, so both Red × 2 and Blue × 1 can appear simultaneously.
 
 ### Persistence
-The store hydrates itself from `localStorage` at module initialisation (before the first render) using `loadSavedCartFromStorage()`, so there is no flash of empty state. A `saveForLater()` action writes the full cart snapshot (quantities, selected variants, active step) to the `wyze_saved_cart` key. Clicking **Save my system for later** calls that action and shows a brief confirmation message.
+The store hydrates itself from `localStorage` at module initialisation (before the first render) using `loadSavedCartFromStorage()`, so there is no flash of empty state. A `saveForLater()` action writes the full cart snapshot (quantities, selected variants, active step) to the `cart` key. Clicking **Save my system for later** calls that action and shows a brief confirmation message.
 
 ### Pre-populated state
 On a clean session, `sense-hub` (the required hub) is pre-added to step 3 at quantity 1, matching the design's pre-populated review panel. The spec mentions sensors, an accessory, and a plan pre-loaded; currently only the hub is seeded into the initial cart — see **What I didn't finish** below.
