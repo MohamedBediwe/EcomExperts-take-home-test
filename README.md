@@ -75,23 +75,6 @@ On a clean session, `sense-hub` (the required hub) is pre-added to step 3 at qua
 
 ---
 
-## What I Didn't Finish / Known Gaps
-
-| Area | Gap |
-|---|---|
-| **Pre-populated cart** | The spec shows sensors, an accessory (MicroSD), and a plan already in the review panel on load. Only `sense-hub` is in `initialCart`; the motion sensor, MicroSD card, and Cam Unlimited plan are not pre-added. |
-| **Selected card border** | The `isSelected` border class (`border-[#4E2FD2B2]`) is applied but the base `border` utility is missing from the same element, so the border does not render. One-line fix: add `border` to the className. |
-| **Collapsed step "N selected" display** | The spec says collapsed steps should show only a chevron; open steps show the "N selected" count + up-chevron. Currently every step (open or closed) shows the count. |
-| **`util/accordionSteps` module** | `StepAccordion` imports `TStepComponent` from `'../util/accordionSteps'` — this file does not exist in the repository, which will cause a TypeScript compile error on a clean clone. The type can be inlined or the file created. |
-| **`loadSavedSession` double-load** | The store already reads `localStorage` at module init via `loadSavedCartFromStorage()`. The `useEffect` in `App.tsx` calls `loadSavedSession()` a second time on mount, which is redundant (harmless, but noisy). |
-| **Tailwind dynamic `bg-${bg}` class** | `QuantityStepper` builds a class name with a template literal (`bg-${bg}`). Tailwind v4 (JIT) does not scan dynamic strings, so the custom background colour will not be included in the output. Use a static lookup object or inline style instead. |
-| **Accordion all-collapsed state** | Clicking the active step header sets `activeStep` to `0`, which closes all steps with no open panel — this is navigable but slightly odd UX. A simpler model keeps at least one step always open. |
-| **Financing line** | The spec lists a "financing line" below the satisfaction badge; this is absent from the review panel. |
-| **`xl:flex-col` layout regression** | The two-column layout in `App.tsx` uses `lg:flex-row xl:flex-col`, which reverts to a stacked layout on very wide screens. This seems unintentional — the design is a two-column layout at desktop widths. |
-| **Root-level README** | No `README.md` exists at the repo root. Reviewers cloning the repo see nothing until they navigate into a subfolder. |
-
----
-
 ## Tech Stack
 
 | Layer | Choice |
